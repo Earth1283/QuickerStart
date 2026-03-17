@@ -1,49 +1,38 @@
-Caution
--------
-No Team-specific code should be placed or modified in this ``.../samples`` folder.
+==============================
+Samples README
+==============================
 
-Samples should be Copied from here, and then Pasted into the team's
-`TeamCode/src/main/java/org/firstinspires/ftc/teamcode <../../../../../../../../../../TeamCode/src/main/java/org/firstinspires/ftc/teamcode>`_
-folder, using the Android Studio cut and paste commands. This automatically changes all file and
-class names to be consistent. From there, the sample can be modified to suit the team's needs.
+.. warning::
+   **Caution:** No team-specific code should be placed or modified in this ``.../samples`` folder.
 
-For more detailed instructions see the /teamcode readme.
+Samples should be **copied** from here and **pasted** into your team's code folder in Android Studio:
+``TeamCode/src/main/java/org/firstinspires/ftc/teamcode``
+
+This process automatically ensures class names remain consistent. Once copied, you can modify the sample to suit your team's needs.
+
+For detailed instructions, refer to the `TeamCode readme <../../../../../../../../../../TeamCode/src/main/java/org/firstinspires/ftc/teamcode/readme.rst>`_.
 
 Naming of Samples
------------------
+=================
 
-To gain a better understanding of how the samples are organized, and how to interpret the
-naming system, it will help to understand the conventions that were used during their creation.
+To understand how the samples are organized, refer to the naming conventions in the ``sample_conventions.rst`` file in this folder.
 
-These conventions are described (in detail) in the ``sample_conventions.rst`` file in this folder.
+The class names follow a prefix-based convention indicating their purpose:
 
-To summarize: A range of different samples classes will reside in the java/external/samples.
-The class names will follow a naming convention which indicates the purpose of each class.
-The prefix of the name will be one of the following:
+Basic
+    A minimally functional OpMode showing the bare-bones structure.
+Sensor
+    Shows the minimal code required to read and display specific sensor values.
+Robot
+    Assumes a simple two-motor drive base, used for navigation or sensor-driven driving samples.
+Concept
+    Illustrates a specific programming concept or complex function. Details are usually provided in the code comments.
+Utility
+    A useful tool for specific development tasks, not intended for competition code.
 
-Basic:
-    This is a minimally functional OpMode used to illustrate the skeleton/structure
-    of a particular style of OpMode. These are bare bones examples.
+Naming Patterns
+---------------
 
-Sensor:
-    This is a Sample OpMode that shows how to use a specific sensor.
-    It is not intended to drive a functioning robot, it is simply showing the minimal code
-    required to read and display the sensor values.
-
-Robot:
-    This is a Sample OpMode that assumes a simple two-motor (differential) drive base.
-    It may be used to provide a common baseline driving OpMode, or
-    to demonstrate how a particular sensor or concept can be used to navigate.
-
-Concept:
-    This is a sample OpMode that illustrates performing a specific function or concept.
-    These may be complex, but their operation should be explained clearly in the comments,
-    or the comments should reference an external doc, guide or tutorial.
-    Each OpMode should try to only demonstrate a single concept so they are easy to
-    locate based on their name. These OpModes may not produce a drivable robot.
-
-After the prefix, other conventions will apply:
-
-* Sensor class names are constructed as: Sensor - Company - Type
-* Robot class names are constructed as: Robot - Mode - Action - OpModetype
-* Concept class names are constructed as: Concept - Topic - OpModetype
+* **Sensor classes:** ``Sensor <Company> <Type>``
+* **Robot classes:** ``Robot <Mode> <Action> <OpModeType>``
+* **Concept classes:** ``Concept <Topic> <OpModeType>``

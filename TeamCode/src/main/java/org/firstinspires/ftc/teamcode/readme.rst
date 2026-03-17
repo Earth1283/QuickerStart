@@ -1,139 +1,79 @@
 TeamCode Module
 ===============
 
-Welcome!
+Welcome to the **TeamCode** module!
 
-This module, TeamCode, is the place where you will write/paste the code for your team's
-robot controller App. This module is currently empty (a clean slate) but the
-process for adding OpModes is straightforward.
+This is where you will write or paste the code for your team's robot controller App. While this module starts as a clean slate, adding OpModes is straightforward, whether you prefer **Java** or **Kotlin**.
 
 Creating your own OpModes
 =========================
 
-The easiest way to create your own OpMode is to copy a Sample OpMode and make it your own.
+The easiest way to create your own OpMode is to copy a Sample OpMode and customize it.
 
-Sample opmodes exist in the FtcRobotController module.
-To locate these samples, find the FtcRobotController module in the "Project/Android" tab.
-
-Expand the following tree elements:
- FtcRobotController/java/org.firstinspires.ftc.robotcontroller/external/samples
+.. hint::
+   Sample opmodes are located in the ``FtcRobotController`` module under:
+   ``FtcRobotController/java/org.firstinspires.ftc.robotcontroller/external/samples``
 
 Naming of Samples
 -----------------
 
-To gain a better understanding of how the samples are organized, and how to interpret the
-naming system, it will help to understand the conventions that were used during their creation.
+To understand how samples are organized, refer to the naming conventions in the ``sample_conventions.rst`` file.
 
-These conventions are described (in detail) in the `sample_conventions.rst` file in the samples folder.
+Summary of Prefixes:
+    Basic
+        Minimally functional skeleton.
+    Sensor
+        Shows how to use a specific sensor.
+    Robot
+        Assumes a simple two-motor drive base.
+    Concept
+        Illustrates a specific function or concept.
 
-To summarize: A range of different samples classes will reside in the java/external/samples.
-The class names will follow a naming convention which indicates the purpose of each class.
-The prefix of the name will be one of the following:
+Using Kotlin
+------------
 
-Basic:
-    This is a minimally functional OpMode used to illustrate the skeleton/structure
-    of a particular style of OpMode. These are bare bones examples.
+The FTC SDK fully supports **Kotlin**. To create a Kotlin OpMode:
 
-Sensor:
-    This is a Sample OpMode that shows how to use a specific sensor.
-    It is not intended to drive a functioning robot, it is simply showing the minimal code
-    required to read and display the sensor values.
+1. Right-click on the ``org.firstinspires.ftc.teamcode`` package.
+2. Select **New > Kotlin Class/File**.
+3. You can also convert existing Java samples to Kotlin using Android Studio's built-in converter (**Code > Convert Java File to Kotlin File**).
 
-Robot:
-    This is a Sample OpMode that assumes a simple two-motor (differential) drive base.
-    It may be used to provide a common baseline driving OpMode, or
-    to demonstrate how a particular sensor or concept can be used to navigate.
+.. important::
+   When using Kotlin, ensure your classes are properly annotated with ``@TeleOp`` or ``@Autonomous`` so they appear on the Driver Station.
 
-Concept:
-    This is a sample OpMode that illustrates performing a specific function or concept.
-    These may be complex, but their operation should be explained clearly in the comments,
-    or the comments should reference an external doc, guide or tutorial.
-    Each OpMode should try to only demonstrate a single concept so they are easy to
-    locate based on their name. These OpModes may not produce a drivable robot.
+Copying Samples in Android Studio
+---------------------------------
 
-After the prefix, other conventions will apply:
+1. Locate the desired sample in the Project tree.
+2. Right-click and select **Copy**.
+3. Expand ``TeamCode/java`` or ``TeamCode/kotlin``.
+4. Right-click on your team package and select **Paste**.
+5. Choose a meaningful name (e.g., ``MyFirstOpMode``).
 
-* Sensor class names are constructed as: Sensor - Company - Type
-* Robot class names are constructed as: Robot - Mode - Action - OpModetype
-* Concept class names are constructed as: Concept - Topic - OpModetype
+Enabling your OpMode
+--------------------
 
-Once you are familiar with the range of samples available, you can choose one to be the
-basis for your own robot. In all cases, the desired sample(s) needs to be copied into
-your TeamCode module to be used.
+Each sample begins with configuration annotations:
 
-This is done inside Android Studio directly, using the following steps:
+.. code-block:: kotlin
 
- 1) Locate the desired sample class in the Project/Android tree.
-
- 2) Right click on the sample class and select "Copy"
-
- 3) Expand the TeamCode/java folder
-
- 4) Right click on the org.firstinspires.ftc.teamcode folder and select "Paste"
-
- 5) You will be prompted for a class name for the copy.
-    Choose something meaningful based on the purpose of this class.
-    Start with a capital letter, and remember that there may be more similar classes later.
-
-Once your copy has been created, you should prepare it for use on your robot.
-This is done by adjusting the OpMode's name, and enabling it to be displayed on the
-Driver Station's OpMode list.
-
-Each OpMode sample class begins with several lines of code like the ones shown below:
-
-.. code-block:: java
-
-    @TeleOp(name="Template: Linear OpMode", group="Linear Opmode")
+    @TeleOp(name="My Robot: Drive", group="Iterative Opmode")
     @Disabled
+    class MyDriveOpMode : OpMode() { ... }
 
-The name that will appear on the driver station's "opmode list" is defined by the code:
- ``name="Template: Linear OpMode"``
-You can change what appears between the quotes to better describe your opmode.
-The "group=" portion of the code can be used to help organize your list of OpModes.
+* **name:** What appears on the Driver Station list.
+* **@Disabled:** Remove this line to make the OpMode visible on the Driver Station.
 
-As shown, the current OpMode will NOT appear on the driver station's OpMode list because of the
- ``@Disabled`` annotation which has been included.
-This line can simply be deleted , or commented out, to make the OpMode visible.
+ADVANCED: Cloning the TeamCode Module
+=====================================
 
+If you have multiple teams and want them to share a common code organization while maintaining their own code:
 
+1. Copy the "TeamCode" folder to a sibling folder (e.g., "Team0417").
+2. Delete ``TeamCode.iml`` in the new folder.
+3. Rename the source package folder to match.
+4. Update ``AndroidManifest.xml`` with the new package name.
+5. Add ``include ':Team0417'`` to ``settings.gradle``.
 
-ADVANCED Multi-Team App management: Cloning the TeamCode Module
-===============================================================
-
-In some situations, you have multiple teams in your club and you want them to all share
-a common code organization, with each being able to *see* the others code but each having
-their own team module with their own code that they maintain themselves.
-
-In this situation, you might wish to clone the TeamCode module, once for each of these teams.
-Each of the clones would then appear along side each other in the Android Studio module list,
-together with the FtcRobotController module (and the original TeamCode module).
-
-Selective Team phones can then be programmed by selecting the desired Module from the pulldown list
-prior to clicking to the green Run arrow.
-
-Warning: This is not for the inexperienced Software developer.
-You will need to be comfortable with File manipulations and managing Android Studio Modules.
-These changes are performed OUTSIDE of Android Studios, so close Android Studios before you do this.
-
-Also.. Make a full project backup before you start this :)
-
-To clone TeamCode, do the following:
-
-Note: Some names start with "Team" and others start with "team". This is intentional.
-
-1) Using your operating system file management tools, copy the whole "TeamCode"
-   folder to a sibling folder with a corresponding new name, eg: "Team0417".
-
-2) In the new Team0417 folder, delete the TeamCode.iml file.
-
-3) In the new Team0417 folder, rename the "src/main/java/org/firstinspires/ftc/teamcode" folder
-   to a matching name with a lowercase 'team' eg: "team0417".
-
-4) In the new Team0417/src/main folder, edit the "AndroidManifest.xml" file, change the line that contains
-        package="org.firstinspires.ftc.teamcode"
-   to be
-        package="org.firstinspires.ftc.team0417"
-
-5) Add: ``include ':Team0417'`` to the "/settings.gradle" file.
-
-6) Open up Android Studios and clean out any old files by using the menu to "Build/Clean Project"
+.. warning::
+   Cloning modules is an advanced task. Make a full project backup before starting!
